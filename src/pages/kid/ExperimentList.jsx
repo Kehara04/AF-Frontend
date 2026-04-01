@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import http from "../../api/http";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 export default function ExperimentList() {
   const [experiments, setExperiments] = useState([]);
   const navigate = useNavigate();
@@ -25,7 +23,7 @@ export default function ExperimentList() {
         <div key={exp.experiment_id} className="border p-4 rounded-xl mb-3 flex gap-4">
           {exp.image && (
             <img 
-              src={`${API_URL}/uploads/${exp.image}`} 
+              src={`${import.meta.env.VITE_API_URL}/uploads/${exp.image}`}
               alt={exp.title} 
               className="w-32 h-32 object-cover rounded-lg flex-shrink-0" 
             />

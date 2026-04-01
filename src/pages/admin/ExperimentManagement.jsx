@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import http from "../../api/http";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 export default function ExperimentManagement() {
   const [experiments, setExperiments] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -117,7 +115,7 @@ export default function ExperimentManagement() {
             <div className="relative h-44 bg-gradient-to-br from-blue-100 to-indigo-100">
               {exp.image ? (
                 <img
-                  src={`${API_URL}/uploads/${exp.image}`}
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${exp.image}`}
                   alt={exp.title}
                   className="w-full h-full object-cover"
                 />

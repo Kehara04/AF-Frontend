@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import http from "../../api/http";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 export default function PlaceOrder() {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
@@ -69,7 +67,7 @@ export default function PlaceOrder() {
         <div className="flex gap-4 mb-4">
           {experiment.image && (
             <img 
-              src={`${API_URL}/uploads/${experiment.image}`} 
+              src={`${import.meta.env.VITE_API_URL}/uploads/${experiment.image}`}
               alt={experiment.title} 
               className="w-24 h-24 object-cover rounded-lg" 
             />

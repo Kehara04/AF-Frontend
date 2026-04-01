@@ -30,7 +30,7 @@ import OrderManagement from "./pages/admin/OrderManagement";
 import ExperimentList from "./pages/kid/ExperimentList";
 import PlaceOrder from "./pages/kid/PlaceOrder";
 
-import TutorialManager from "./pages/admin/TutorialManager";
+import TutorialManager from "./pages/admin/tutorialManager";
 
 import TutorialList from "./pages/kid/TutorialList";
 import TutorialView from "./pages/kid/TutorialView";

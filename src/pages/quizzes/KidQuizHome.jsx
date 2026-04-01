@@ -145,7 +145,7 @@ export default function KidQuizHome() {
               <div className="mt-6 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
                 {filteredExperiments.map((exp) => {
                   const imageUrl = exp.image
-                    ? `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/uploads/${exp.image}`
+                    ? `${import.meta.env.VITE_API_URL}/uploads/${exp.image}`
                     : "";
 
                   return (

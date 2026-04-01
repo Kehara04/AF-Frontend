@@ -37,7 +37,7 @@ import TutorialView from "./pages/kid/TutorialView";
 
 import AdminFeedbackManagement from "./pages/admin/AdminFeedbackManagement";
 import AdminProgressManagement from "./pages/admin/AdminProgressManagement";
-import kidBackground from "./assets/background5.PNG";
+import kidBackground from "./assets/background5.png";
 
 export default function App() {
   return (

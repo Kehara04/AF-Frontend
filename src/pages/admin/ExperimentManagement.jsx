@@ -87,35 +87,35 @@ export default function ExperimentManagement() {
   };
 
   return (
-    <div className="p-6 bg-white rounded-3xl shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Manage Experiments 🧪</h2>
+    <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-2xl rounded-3xl p-6">
+      <h2 className="text-2xl font-black text-slate-900 mb-4">Manage Experiments 🧪</h2>
 
-      <div className="grid gap-3 mb-6">
-        <input name="title" placeholder="Title" value={form.title} onChange={handleChange} className="border p-2 rounded" />
-        <input name="description" placeholder="Description" value={form.description} onChange={handleChange} className="border p-2 rounded" />
-        <input name="ageGroup" placeholder="Age Group" value={form.ageGroup} onChange={handleChange} className="border p-2 rounded" />
-        <input name="tools" placeholder="Tools (comma separated)" value={form.tools} onChange={handleChange} className="border p-2 rounded" />
-        <input name="price" type="number" placeholder="Price" value={form.price} onChange={handleChange} className="border p-2 rounded" />
-        <select name="difficulty" value={form.difficulty} onChange={handleChange} className="border p-2 rounded">
+      <div className="grid gap-3 mb-6 bg-white/30 backdrop-blur-sm border border-white/40 rounded-2xl p-4">
+        <input name="title" placeholder="Title" value={form.title} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <input name="description" placeholder="Description" value={form.description} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <input name="ageGroup" placeholder="Age Group" value={form.ageGroup} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <input name="tools" placeholder="Tools (comma separated)" value={form.tools} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <input name="price" type="number" placeholder="Price" value={form.price} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <select name="difficulty" value={form.difficulty} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl">
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
           <option value="Advanced">Advanced</option>
         </select>
-        <input name="duration" placeholder="Duration (e.g., 30 minutes)" value={form.duration} onChange={handleChange} className="border p-2 rounded" />
-        <input type="file" accept="image/*" onChange={handleImageChange} className="border p-2 rounded" />
+        <input name="duration" placeholder="Duration (e.g., 30 minutes)" value={form.duration} onChange={handleChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
+        <input type="file" accept="image/*" onChange={handleImageChange} className="border border-white/60 bg-white/70 p-2 rounded-xl" />
 
-        <button onClick={handleSubmit} className="bg-sky-600 text-white p-2 rounded-xl">
+        <button onClick={handleSubmit} className="bg-sky-600 text-white p-2 rounded-xl font-bold hover:bg-sky-700 transition-colors">
           {editingId ? "Update Experiment" : "Add Experiment"}
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {experiments.map((exp) => (
-          <div key={exp.experiment_id} className="bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+          <div key={exp.experiment_id} className="bg-white/30 backdrop-blur-sm border border-white/40 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
             <div className="relative h-44 bg-gradient-to-br from-blue-100 to-indigo-100">
               {exp.image ? (
                 <img
-                  src={`${import.meta.env.VITE_API_URL}/uploads/${exp.image}`}
+                  src={`http://localhost:5000/uploads/${exp.image}`}
                   alt={exp.title}
                   className="w-full h-full object-cover"
                 />

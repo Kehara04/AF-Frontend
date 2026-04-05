@@ -16,22 +16,25 @@ export default function ExperimentList() {
   };
 
   return (
-    <div className="p-6 bg-white rounded-3xl shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Available Experiments 🧪</h2>
+    <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-2xl rounded-3xl p-6">
+      <h2 className="text-2xl font-black text-slate-900 mb-4">Available Experiments 🧪</h2>
 
       {experiments.map((exp) => (
-        <div key={exp.experiment_id} className="border p-4 rounded-xl mb-3 flex gap-4">
+        <div
+          key={exp.experiment_id}
+          className="bg-white/30 backdrop-blur-sm border border-white/40 rounded-2xl p-4 mb-3 flex gap-4 shadow-sm hover:bg-white/40 transition"
+        >
           {exp.image && (
             <img 
-              src={`${import.meta.env.VITE_API_URL}/uploads/${exp.image}`}
+              src={`http://localhost:5000/uploads/${exp.image}`} 
               alt={exp.title} 
               className="w-32 h-32 object-cover rounded-lg flex-shrink-0" 
             />
           )}
           <div className="flex-1">
-            <h3 className="font-bold text-lg">{exp.title}</h3>
-            <p className="text-gray-700 mb-2">{exp.description}</p>
-            <div className="text-sm text-gray-600 space-y-1">
+            <h3 className="font-bold text-lg text-slate-900">{exp.title}</h3>
+            <p className="text-slate-700 mb-2">{exp.description}</p>
+            <div className="text-sm text-slate-600 space-y-1">
               <p><strong>Age Group:</strong> {exp.ageGroup}</p>
               <p><strong>Difficulty:</strong> {exp.difficulty}</p>
               <p><strong>Duration:</strong> {exp.duration}</p>

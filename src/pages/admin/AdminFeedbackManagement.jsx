@@ -142,13 +142,13 @@ export default function AdminFeedbackManagement() {
         <div className="space-y-6">
 
             {/* Header */}
-            <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="bg-white/70 backdrop-blur-md border border-white/70 shadow-xl rounded-3xl p-5 flex items-center justify-between flex-wrap gap-3">
                 <div>
                     <h1 className="text-3xl font-black text-slate-900">Feedback Management 💬</h1>
                     <p className="text-slate-500 text-sm mt-0.5">All experiment feedback from kids</p>
                 </div>
                 {deleteSuccess && (
-                    <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-bold px-4 py-2 rounded-xl">
+                    <div className="bg-emerald-100/75 backdrop-blur-sm border border-emerald-200 text-emerald-700 text-sm font-bold px-4 py-2 rounded-xl">
                         ✅ {deleteSuccess}
                     </div>
                 )}
@@ -157,10 +157,10 @@ export default function AdminFeedbackManagement() {
             {/* Stats Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {[
-                    { label: "Total Feedback", value: feedbacks.length, icon: "💬", color: "bg-violet-50 border-violet-200 text-violet-700" },
-                    { label: "Avg Rating", value: `${avgOverall} ★`, icon: "⭐", color: "bg-amber-50 border-amber-200 text-amber-700" },
-                    { label: "Happy Responses", value: typeCounts.positive, icon: "😄", color: "bg-emerald-50 border-emerald-200 text-emerald-700" },
-                    { label: "Sad Responses", value: typeCounts.negative, icon: "😢", color: "bg-rose-50 border-rose-200 text-rose-700" },
+                    { label: "Total Feedback", value: feedbacks.length, icon: "💬", color: "bg-violet-100/75 border-violet-200 text-violet-700 backdrop-blur-sm" },
+                    { label: "Avg Rating", value: `${avgOverall} ★`, icon: "⭐", color: "bg-amber-100/75 border-amber-200 text-amber-700 backdrop-blur-sm" },
+                    { label: "Happy Responses", value: typeCounts.positive, icon: "😄", color: "bg-emerald-100/75 border-emerald-200 text-emerald-700 backdrop-blur-sm" },
+                    { label: "Sad Responses", value: typeCounts.negative, icon: "😢", color: "bg-rose-100/75 border-rose-200 text-rose-700 backdrop-blur-sm" },
                 ].map(s => (
                     <div key={s.label} className={`border rounded-2xl p-4 ${s.color}`}>
                         <div className="text-2xl mb-1">{s.icon}</div>
@@ -173,13 +173,13 @@ export default function AdminFeedbackManagement() {
             {/* Charts */}
             {feedbacks.length > 0 && (
                 <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+                    <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-3xl p-6 shadow-sm">
                         <h3 className="font-black text-slate-800 mb-4">Feedback Type Distribution</h3>
                         <div className="max-w-xs mx-auto">
                             <Doughnut data={doughnutData} options={{ plugins: { legend: { position: "bottom" } } }} />
                         </div>
                     </div>
-                    <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+                    <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-3xl p-6 shadow-sm">
                         <h3 className="font-black text-slate-800 mb-4">Avg Rating per Experiment</h3>
                         {expNames.length > 0
                             ? <Bar data={barData} options={barOptions} />
@@ -190,12 +190,12 @@ export default function AdminFeedbackManagement() {
             )}
 
             {/* Filters */}
-            <div className="bg-white border border-slate-100 rounded-2xl px-5 py-4 flex flex-wrap gap-3 items-center shadow-sm">
+            <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-2xl px-5 py-4 flex flex-wrap gap-3 items-center shadow-sm">
                 <span className="text-sm font-bold text-slate-600">Filter:</span>
                 <select
                     value={filterType}
                     onChange={e => setFilterType(e.target.value)}
-                    className="border border-slate-200 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
+                    className="border border-white/70 bg-white/90 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
                 >
                     <option value="all">All Types</option>
                     <option value="positive">😄 Happy</option>
@@ -205,7 +205,7 @@ export default function AdminFeedbackManagement() {
                 <select
                     value={filterExp}
                     onChange={e => setFilterExp(e.target.value)}
-                    className="border border-slate-200 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
+                    className="border border-white/70 bg-white/90 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
                 >
                     <option value="all">All Experiments</option>
                     {experimentNames.map(name => (
@@ -216,25 +216,25 @@ export default function AdminFeedbackManagement() {
             </div>
 
             {/* Table */}
-            <div className="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden">
+            <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-3xl shadow-sm overflow-hidden">
                 {filtered.length === 0 ? (
                     <div className="text-center py-16 text-slate-400 font-medium">No feedback found.</div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm">
-                            <thead className="bg-slate-50 border-b border-slate-100">
+                            <thead className="bg-white/90 border-b border-white/70">
                                 <tr>
                                     {["Kid", "Experiment", "Type", "Rating", "Comment", "Date", "Action"].map(h => (
                                         <th key={h} className="text-left text-xs font-black text-slate-500 uppercase tracking-wide px-5 py-3">{h}</th>
                                     ))}
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-50">
+                            <tbody className="divide-y divide-white/55">
                                 {filtered.map(f => {
                                     const meta = TYPE_META[f.feedbackType] || TYPE_META["knowledge-sharing"];
                                     const date = new Date(f.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
                                     return (
-                                        <tr key={f._id} className="hover:bg-slate-50/60 transition-colors">
+                                        <tr key={f._id} className="hover:bg-white/65 transition-colors">
                                             <td className="px-5 py-4">
                                                 <p className="font-bold text-slate-800">{f.student?.name || "—"}</p>
                                                 <p className="text-xs text-slate-400">{f.student?.email}</p>

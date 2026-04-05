@@ -65,69 +65,69 @@ export default function OrderManagement() {
   );
 
   return (
-    <div className="p-6 bg-white rounded-3xl shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Orders 📦</h2>
+    <div className="bg-white/70 backdrop-blur-md border border-white/70 shadow-2xl rounded-3xl p-6">
+      <h2 className="text-2xl font-black text-slate-900 mb-4">Orders 📦</h2>
 
       <div className="flex gap-2 mb-4">
         <input
           placeholder="Enter Experiment ID"
           value={experimentId}
           onChange={(e) => setExperimentId(e.target.value)}
-          className="border p-2 rounded"
+          className="border border-white/70 bg-white/90 p-2 rounded-xl"
         />
         <button
           onClick={fetchOrders}
-          className="bg-sky-600 text-white p-2 rounded-xl"
+          className="bg-sky-600 text-white p-2 rounded-xl font-semibold hover:bg-sky-700 transition-colors"
         >
           Filter by Experiment
         </button>
         {isFiltered && (
           <button
             onClick={fetchAllOrders}
-            className="bg-green-600 text-white px-4 rounded-xl"
+            className="bg-emerald-600 text-white px-4 rounded-xl font-semibold hover:bg-emerald-700 transition-colors"
           >
             Show All Orders
           </button>
         )}
       </div>
 
-      <p className="mb-4 text-gray-600">
+      <p className="mb-4 text-slate-600 font-medium">
         {isFiltered ? `Showing orders for experiment ${experimentId}` : `Showing all orders (${orders.length} total)`}
       </p>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200 rounded-xl shadow-sm">
-          <thead className="bg-slate-100 border-b border-gray-200">
+      <div className="overflow-x-auto bg-white/75 backdrop-blur-sm border border-white/60 rounded-2xl shadow-sm">
+        <table className="min-w-full">
+          <thead className="bg-white/90 border-b border-white/70">
             <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Order ID</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Kid</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Experiment (ID)</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Quantity</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Notes</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Ordered At</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Order ID</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Kid</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Experiment (ID)</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Quantity</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Status</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Notes</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Ordered At</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order.order_id} className="border-b last:border-b-0 hover:bg-gray-50">
-                <td className="px-4 py-3 text-sm text-gray-800">{order.order_id}</td>
-                <td className="px-4 py-3 text-sm text-gray-800">
+              <tr key={order.order_id} className="border-b border-white/55 last:border-b-0 hover:bg-white/65">
+                <td className="px-4 py-3 text-sm text-slate-800">{order.order_id}</td>
+                <td className="px-4 py-3 text-sm text-slate-800">
                   <div className="font-semibold">{order.kid_id?.name || order.kid_id}</div>
-                  <div className="text-xs text-gray-500">{order.kid_id?.email || ''}</div>
+                  <div className="text-xs text-slate-500">{order.kid_id?.email || ''}</div>
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-800">
+                <td className="px-4 py-3 text-sm text-slate-800">
                   <div className="font-semibold">{order.experiment_id?.title || order.experiment_id}</div>
-                  <div className="text-xs text-gray-500">ID: {order.experiment_id?.experiment_id || order.experiment_id}</div>
+                  <div className="text-xs text-slate-500">ID: {order.experiment_id?.experiment_id || order.experiment_id}</div>
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-800">{order.quantity}</td>
+                <td className="px-4 py-3 text-sm text-slate-800">{order.quantity}</td>
                 <td className="px-4 py-3 text-sm">
                   <div className="flex items-center gap-2">
                     {renderStatusPill(order.status)}
                     <select
                       value={order.status}
                       onChange={(e) => updateOrderStatus(order.order_id, e.target.value)}
-                      className="border rounded px-2 py-1 text-xs"
+                      className="border border-white/70 bg-white/90 rounded px-2 py-1 text-xs"
                     >
                       <option value="pending">pending</option>
                       <option value="confirmed">confirmed</option>
@@ -136,8 +136,8 @@ export default function OrderManagement() {
                     </select>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-sm text-gray-800">{order.notes || '—'}</td>
-                <td className="px-4 py-3 text-sm text-gray-800">{new Date(order.createdAt).toLocaleString()}</td>
+                <td className="px-4 py-3 text-sm text-slate-800">{order.notes || '—'}</td>
+                <td className="px-4 py-3 text-sm text-slate-800">{new Date(order.createdAt).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>

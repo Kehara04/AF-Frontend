@@ -50,8 +50,8 @@ export default function PlaceOrder() {
 
   if (!experiment) {
     return (
-      <div className="p-6 bg-white rounded-3xl shadow-sm">
-        <p>Loading experiment details...</p>
+      <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-2xl rounded-3xl p-6">
+        <p className="text-slate-700">Loading experiment details...</p>
       </div>
     );
   }
@@ -59,26 +59,26 @@ export default function PlaceOrder() {
   const totalPrice = experiment.price * quantity;
 
   return (
-    <div className="p-6 bg-white rounded-3xl shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Place Order 🛒</h2>
+    <div className="bg-white/40 backdrop-blur-md border border-white/60 shadow-2xl rounded-3xl p-6">
+      <h2 className="text-2xl font-black text-slate-900 mb-4">Place Order 🛒</h2>
 
       {/* Experiment Details */}
-      <div className="border rounded-xl p-4 mb-6 bg-gray-50">
+      <div className="bg-white/30 backdrop-blur-sm border border-white/40 rounded-2xl p-4 mb-6">
         <div className="flex gap-4 mb-4">
           {experiment.image && (
             <img 
-              src={`${import.meta.env.VITE_API_URL}/uploads/${experiment.image}`}
+              src={`http://localhost:5000/uploads/${experiment.image}`} 
               alt={experiment.title} 
               className="w-24 h-24 object-cover rounded-lg" 
             />
           )}
           <div>
-            <h3 className="font-bold text-xl">{experiment.title}</h3>
-            <p className="text-gray-700">{experiment.description}</p>
+            <h3 className="font-bold text-xl text-slate-900">{experiment.title}</h3>
+            <p className="text-slate-700">{experiment.description}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-2 gap-4 text-sm text-slate-700">
           <div>
             <p><strong>Age Group:</strong> {experiment.ageGroup}</p>
             <p><strong>Difficulty:</strong> {experiment.difficulty}</p>
@@ -103,38 +103,38 @@ export default function PlaceOrder() {
 
       {/* Order Form */}
       <div className="space-y-4">
-        <div className="bg-blue-50 p-4 rounded-xl">
-          <p className="text-lg font-semibold">Price per kit: LKR {experiment.price.toFixed(2)}</p>
-          <p className="text-lg font-semibold mt-1">Total: LKR {totalPrice.toFixed(2)}</p>
+        <div className="bg-white/30 backdrop-blur-sm border border-white/40 p-4 rounded-2xl">
+          <p className="text-lg font-semibold text-slate-900">Price per kit: LKR {experiment.price.toFixed(2)}</p>
+          <p className="text-lg font-semibold text-slate-900 mt-1">Total: LKR {totalPrice.toFixed(2)}</p>
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Quantity</label>
+          <label className="block text-sm font-medium text-slate-700 mb-1">Quantity</label>
           <input
             type="number"
             min="1"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="w-full border border-white/60 bg-white/70 p-2 rounded-xl"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Notes (Optional)</label>
+          <label className="block text-sm font-medium text-slate-700 mb-1">Notes (Optional)</label>
           <textarea
             placeholder="Any special instructions or notes..."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="border p-2 rounded w-full h-20 resize-none"
+            className="w-full h-20 resize-none border border-white/60 bg-white/70 p-2 rounded-xl"
           />
         </div>
 
-        <div className="bg-blue-50 p-4 rounded-xl">
-          <p className="text-lg font-semibold">Total: LKR {totalPrice.toFixed(2)}</p>
+        <div className="bg-white/30 backdrop-blur-sm border border-white/40 p-4 rounded-2xl">
+          <p className="text-lg font-semibold text-slate-900">Total: LKR {totalPrice.toFixed(2)}</p>
         </div>
 
         <button
           onClick={handleOrder}
-          className="bg-sky-600 text-white px-6 py-3 rounded-xl w-full hover:bg-sky-700 font-semibold"
+          className="bg-sky-600 text-white px-6 py-3 rounded-xl w-full hover:bg-sky-700 font-semibold transition-colors"
         >
           Confirm Order
         </button>

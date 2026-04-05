@@ -87,29 +87,29 @@ export default function AdminProgressManagement() {
         <div className="space-y-6">
 
             {/* Header */}
-            <div>
+            <div className="bg-white/70 backdrop-blur-md border border-white/70 shadow-xl rounded-3xl p-5">
                 <h1 className="text-3xl font-black text-slate-900">Progress Management 📊</h1>
                 <p className="text-slate-500 text-sm mt-0.5">Track all kids' experiment progress and badges</p>
             </div>
 
             {/* Stats Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="bg-violet-50 border border-violet-200 rounded-2xl p-4 text-violet-700">
+                <div className="bg-violet-100/75 backdrop-blur-sm border border-violet-200 rounded-2xl p-4 text-violet-700">
                     <div className="text-2xl mb-1">👧</div>
                     <div className="text-2xl font-black">{totalKids}</div>
                     <div className="text-xs font-semibold opacity-80">Total Kids</div>
                 </div>
-                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-emerald-700">
+                <div className="bg-emerald-100/75 backdrop-blur-sm border border-emerald-200 rounded-2xl p-4 text-emerald-700">
                     <div className="text-2xl mb-1">🧪</div>
                     <div className="text-2xl font-black">{avgCompleted}</div>
                     <div className="text-xs font-semibold opacity-80">Avg Completed</div>
                 </div>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 text-yellow-700">
+                <div className="bg-yellow-100/75 backdrop-blur-sm border border-yellow-200 rounded-2xl p-4 text-yellow-700">
                     <div className="text-2xl mb-1">🏆</div>
                     <div className="text-2xl font-black">{badgeCounts["Master Scientist"] || 0}</div>
                     <div className="text-xs font-semibold opacity-80">Master Scientists</div>
                 </div>
-                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-amber-700">
+                <div className="bg-amber-100/75 backdrop-blur-sm border border-amber-200 rounded-2xl p-4 text-amber-700">
                     <div className="text-2xl mb-1">🗺️</div>
                     <div className="text-2xl font-black">{badgeCounts["Junior Explorer"] || 0}</div>
                     <div className="text-xs font-semibold opacity-80">Junior Explorers</div>
@@ -117,7 +117,7 @@ export default function AdminProgressManagement() {
             </div>
 
             {/* Badge Distribution */}
-            <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+            <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-3xl p-6 shadow-sm">
                 <h3 className="font-black text-slate-800 mb-4">Badge Distribution</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {BADGE_THRESHOLDS.map(b => {
@@ -152,19 +152,19 @@ export default function AdminProgressManagement() {
             )}
 
             {/* Filters */}
-            <div className="bg-white border border-slate-100 rounded-2xl px-5 py-4 flex flex-wrap gap-3 items-center shadow-sm">
+            <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-2xl px-5 py-4 flex flex-wrap gap-3 items-center shadow-sm">
                 <span className="text-sm font-bold text-slate-600">Filter:</span>
                 <input
                     type="text"
                     placeholder="Search by name or email..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="border border-slate-200 rounded-xl px-3 py-1.5 text-sm text-slate-700 focus:outline-none focus:border-violet-400 min-w-[200px]"
+                    className="border border-white/70 bg-white/90 rounded-xl px-3 py-1.5 text-sm text-slate-700 focus:outline-none focus:border-violet-400 min-w-[200px]"
                 />
                 <select
                     value={filterBadge}
                     onChange={e => setFilterBadge(e.target.value)}
-                    className="border border-slate-200 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
+                    className="border border-white/70 bg-white/90 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-700 focus:outline-none focus:border-violet-400"
                 >
                     <option value="all">All Badges</option>
                     {BADGE_THRESHOLDS.map(b => (
@@ -175,27 +175,27 @@ export default function AdminProgressManagement() {
             </div>
 
             {/* Leaderboard Table */}
-            <div className="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden">
+            <div className="bg-white/75 backdrop-blur-sm border border-white/60 rounded-3xl shadow-sm overflow-hidden">
                 {filtered.length === 0 ? (
                     <div className="text-center py-16 text-slate-400 font-medium">No kids found.</div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm">
-                            <thead className="bg-slate-50 border-b border-slate-100">
+                            <thead className="bg-white/90 border-b border-white/70">
                                 <tr>
                                     {["Rank", "Kid", "Badge", "Completed", "Experiments", ""].map(h => (
                                         <th key={h} className="text-left text-xs font-black text-slate-500 uppercase tracking-wide px-5 py-3">{h}</th>
                                     ))}
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-50">
+                            <tbody className="divide-y divide-white/55">
                                 {filtered.map((p, idx) => {
                                     const rank = allProgress.findIndex(ap => ap._id === p._id) + 1;
                                     const isExpanded = expandedRow === p._id;
                                     const experiments = p.completedExperiments || [];
                                     return (
                                         <>
-                                            <tr key={p._id} className={`hover:bg-slate-50/60 transition-colors ${rank <= 3 ? "bg-gradient-to-r from-transparent to-yellow-50/30" : ""}`}>
+                                            <tr key={p._id} className={`hover:bg-white/65 transition-colors ${rank <= 3 ? "bg-gradient-to-r from-transparent to-yellow-50/30" : ""}`}>
                                                 <td className="px-5 py-4 text-center">
                                                     <RankIcon rank={rank} />
                                                 </td>

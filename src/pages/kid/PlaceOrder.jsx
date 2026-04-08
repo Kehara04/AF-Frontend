@@ -67,7 +67,7 @@ export default function PlaceOrder() {
         <div className="flex gap-4 mb-4">
           {experiment.image && (
             <img 
-              src={`http://localhost:5000/uploads/${experiment.image}`} 
+              src={experiment.image}
               alt={experiment.title} 
               className="w-24 h-24 object-cover rounded-lg" 
             />

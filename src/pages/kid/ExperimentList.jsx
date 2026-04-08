@@ -26,7 +26,7 @@ export default function ExperimentList() {
         >
           {exp.image && (
             <img 
-              src={`http://localhost:5000/uploads/${exp.image}`} 
+              src={exp.image} 
               alt={exp.title} 
               className="w-32 h-32 object-cover rounded-lg flex-shrink-0" 
             />

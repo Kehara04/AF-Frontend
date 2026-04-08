@@ -115,7 +115,7 @@ export default function ExperimentManagement() {
             <div className="relative h-44 bg-gradient-to-br from-blue-100 to-indigo-100">
               {exp.image ? (
                 <img
-                  src={`http://localhost:5000/uploads/${exp.image}`}
+                  src={exp.image}
                   alt={exp.title}
                   className="w-full h-full object-cover"
                 />

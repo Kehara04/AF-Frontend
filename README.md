@@ -269,29 +269,6 @@ Steps:
 *Frontend successfully deployed on Vercel*
 
 
-## Testing Instructions
-
-> Update this section after adding actual frontend tests.
-
-Suggested areas to test:
-- login flow
-- protected routes
-- role-based route behavior
-- form validation
-- API error handling
-- quiz submission flow
-- order placement flow
-
-## Known Gaps to Improve
-
-- Add Redux only if the project needs more complex shared state
-- Add unit/component tests using Vitest and React Testing Library
-- Add end-to-end tests for major user flows
-- Add deployment screenshots
-- Add better form validation and reusable form helpers
-
-
-
 ## License
 
 This project was developed for the **SE3040 – Application Frameworks** assignment.

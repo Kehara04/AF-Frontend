@@ -260,6 +260,7 @@ Steps:
 - Output Directory: dist
 - Deployed the application and obtained a live URL.
 
+- Frontend live URL - https://miniminds-sandy.vercel.app
 
 ## Deployment Evidence
 
